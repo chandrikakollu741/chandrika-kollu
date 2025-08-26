@@ -1,0 +1,68 @@
+<!Doctype html>
+<html >
+<head>
+    <title>About Me</title>
+  <style>
+    :root { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; color: #222; }
+    body { margin: 0; padding: 40px; display: flex; align-items: center; justify-content: center; min-height: 100vh; background: linear-gradient(180deg,#f7fafc,#ffffff); }
+    .card { background: white; border-radius: 12px; box-shadow: 0 6px 24px rgba(16,24,40,0.08); padding: 28px; width: min(720px, 94%); }
+    h1 { margin: 0 0 10px 0; font-size: 1.6rem; }
+    p { margin: 6px 0; line-height: 1.4; }
+    .meta { background: #f3f4f6; padding: 10px 12px; border-radius: 8px; margin-top: 14px; }
+    .actions { margin-top: 18px; display:flex; gap:8px; }
+    .btn {
+      appearance: none; border: none; padding: 8px 12px; border-radius: 8px;
+      cursor: pointer; font-weight: 600;
+      box-shadow: 0 2px 8px rgba(16,24,40,0.06);
+    }
+    .btn--primary { background: #0ea5a4; color: white; }
+    .btn--outline { background: transparent; border: 1px solid #e6e9ee; color: #0f172a; }
+    footer { margin-top: 16px; font-size: 0.9rem; color: #6b7280; }
+    pre { background:#0f172a; color:#fff; padding:8px; border-radius:8px; overflow:auto; }
+  </style>
+</head>
+<body>
+  <div class="card" role="main">
+    <h1>About Me</h1>
+    <div class="meta" id="aboutBlock">
+      <p><strong>Name:</strong> <span id="name">Sudha</span></p>
+      <p><strong>Course:</strong> <span id="course">Computer Science</span></p>
+      <p><strong>One thing I learned about GitHub:</strong></p>
+      <p id="learn">How to commit files and track changes easily.</p>
+    </div>
+
+    <div class="actions">
+      <!-- Download link will use the about.txt content below -->
+      <a id="downloadLink" class="btn btn--primary" download="about.txt" href="#">Download about.txt</a>
+      <button class="btn btn--outline" onclick="copyText()">Copy about.txt</button>
+    </div>
+
+    <footer>
+      Tip: Replace the placeholder text in this page or in <code>about.txt</code> with your real name and course before committing to GitHub.
+    </footer>
+
+    <script>
+      // Build the about.txt content so the download link works.
+      const name = document.getElementById('name').textContent.trim();
+      const course = document.getElementById('course').textContent.trim();
+      const learn = document.getElementById('learn').textContent.trim();
+
+      const aboutTxt = Name: ${name}\nCourse: ${course}\nOne thing I learned about GitHub: ${learn}\n;
+
+      // Create a data URL for the download link
+      const blob = new Blob([aboutTxt], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+      const dl = document.getElementById('downloadLink');
+      dl.href = url;
+
+      function copyText() {
+        navigator.clipboard.writeText(aboutTxt).then(() => {
+          alert('about.txt contents copied to clipboard');
+        }, () => {
+          alert('Could not copy. You can manually select and copy the text shown above.');
+        });
+      }
+    </script>
+  </div>
+</body>
+</html>
