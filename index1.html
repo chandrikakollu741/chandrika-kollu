@@ -2,14 +2,43 @@
 <head> 
  <style> 
  input[type="text"] { 
- border: 2px solid green; 
- padding: 5px; 
+   border: 2px solid green; 
+   padding: 5px; 
+   margin: 5px;
  } 
+
+ input[type="password"] { 
+   border: 2px solid blue; 
+   padding: 5px; 
+   margin: 5px;
+ }
+
+ button { 
+   padding: 8px 15px; 
+   margin: 5px; 
+   border: none; 
+   border-radius: 5px; 
+   cursor: pointer; 
+   font-size: 14px;
+ } 
+
+ .login-btn {
+   background-color: green;
+   color: white;
+ }
+
+ .submit-btn {
+   background-color: blue;
+   color: white;
+ }
  </style> 
  <title>Attribute Selector</title> 
 </head> 
 <body> 
- <input type="text" placeholder="Enter name"> 
- <input type="password" placeholder="Password"> 
+ <input type="text" placeholder="Enter name"> <br>
+ <input type="password" placeholder="Password"> <br>
+ 
+ <button class="login-btn">Login</button>
+ <button class="submit-btn">Submit</button>
 </body> 
 </html>
